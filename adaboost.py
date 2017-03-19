@@ -75,7 +75,7 @@ def adaBoostTrainDS(dataArr, classLabels, numIt=40):
     :param dataArr: 输入数据集
     :param classLabels: 类别标签
     :param numIt: 迭代次数
-    :return:(weakClassArr, aggClassEst) 训练结果
+    :return: weakClassArr 训练结果，弱分类数组
     '''
     weakClassArr = []
     m = shape(dataArr)[0]
@@ -100,7 +100,7 @@ def adaBoostTrainDS(dataArr, classLabels, numIt=40):
         print("total error: ", errorRate)
         if errorRate == 0.0:
             break
-    return weakClassArr, aggClassEst
+    return weakClassArr # , aggClassEst
 
 
 def adaClassify(datToClass, classifierArr):
@@ -108,9 +108,9 @@ def adaClassify(datToClass, classifierArr):
     m = shape(dataMatrix)[0]
     aggClassEst = mat(zeros((m, 1)))
     for i in range(len(classifierArr)):
-        classEst = stumpClassify(dataMatrix, classifierArr[i]['dim'], \
-                                 classifierArr[i]['thresh'], \
-                                 classifierArr[i]['ineq'])  # call stump classify
+        classEst = stumpClassify(dataMatrix, (classifierArr[i])['dim'],
+                                 (classifierArr[i])['thresh'],
+                                 (classifierArr[i])['ineq'])  # call stump classify
         aggClassEst += classifierArr[i]['alpha'] * classEst
         print(aggClassEst)
     return sign(aggClassEst)
