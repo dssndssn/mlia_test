@@ -11,3 +11,11 @@ git commit -m "first commit"
 git remote add origin https://github.com/dssndssn/mlia_test.git
 git push -u origin master
 ```
+
+# Git command to push an existing repository from the command line
+```
+git remote add origin https://github.com/dssndssn/mlia_test.git
+git push -u origin master
+```
+
+# Git command to fetch
