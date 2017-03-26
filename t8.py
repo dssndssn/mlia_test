@@ -40,7 +40,7 @@ print(corrcoef(y_hat.T, y_mat))
 x_arr, y_arr = regression.loadDataSet('ex0.txt')
 
 print(regression.lwlr(x_arr[0], x_arr, y_arr, 1.0))
-y_hat = regression.lwlrTest(x_arr, x_arr, y_arr, 0.003)
+y_hat = regression.lwlrTest(x_arr, x_arr, y_arr, 0.01)
 
 x_mat = mat(x_arr)
 srt_ind = x_mat[:, 1].argsort(0)
@@ -49,7 +49,6 @@ x_sort = x_mat[srt_ind][:, 0, :]
 fig =plt.figure()
 ax = fig.add_subplot(111)
 ax.plot(x_sort[:, 1], y_hat[srt_ind])
-print(len(x_mat[:1].flatten().A[0]))
-print(len(mat(y_arr).T[:, 0].flatten().A[0]))
-ax.scatter(x_mat[:1].flatten().A[0], mat(y_arr).T[:,0].flatten().A[0], s=2, c='red')
+
+ax.scatter(x_mat[:,1].flatten().A[0], mat(y_arr).T[:,0].flatten().A[0], s=2, c='red')
 plt.show()
