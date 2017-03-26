@@ -100,7 +100,8 @@ def adaBoostTrainDS(dataArr, classLabels, numIt=40):
         print("total error: ", errorRate)
         if errorRate == 0.0:
             break
-    return weakClassArr # , aggClassEst
+    # return weakClassArr  # normal use
+    return weakClassArr, aggClassEst  # For plot ROC
 
 
 def adaClassify(datToClass, classifierArr):
